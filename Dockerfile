@@ -22,6 +22,4 @@ RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list &&
 
 COPY ipfs-swarm-key-gen go-ipfs/ipfs-swarm-key-gen
 
-VOLUME [${IPFS_PATH}]
-
 EXPOSE 5001 8080
