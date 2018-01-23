@@ -11,6 +11,8 @@ WORKDIR /var/local
 RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list && \
 	apt-get update && \
 	apt-get -y upgrade && \
+	apt-get -y install net-tools && \
+	apt-get -y install telnet && \
 	apt-get -y install wget && \
 	wget ${URL}  -O go-ipfs.tar.gz && \
 	tar xzf  go-ipfs.tar.gz && \
@@ -18,7 +20,8 @@ RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list &&
 	mv go-ipfs/ipfs /usr/local/bin/ipfs && \
 	rm go-ipfs/* && \
     rm -rf /var/lib/apt/lists/* && \
-    ipfs init
+    ipfs init && \
+	sed -i /sed -i 's/127.0.0.1/0.0.0.0/g' go-ipfs/data/config
 
 COPY ipfs-swarm-key-gen go-ipfs/ipfs-swarm-key-gen
 
