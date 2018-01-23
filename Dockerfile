@@ -19,8 +19,7 @@ RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list &&
 	rm go-ipfs.tar.gz && \
 	mv go-ipfs/ipfs /usr/local/bin/ipfs && \
 	rm go-ipfs/* && \
-    rm -rf /var/lib/apt/lists/* && \
-    ipfs init
+    rm -rf /var/lib/apt/lists/*
 
 COPY ipfs-swarm-key-gen go-ipfs/ipfs-swarm-key-gen
 
