@@ -4,7 +4,7 @@ MAINTAINER zhezhao zhezhao1993@qq.com
 ENV DEBIAN_FRONTEND noninteractive
 ENV IPFS_VERSION v0.4.13
 ENV URL https://dist.ipfs.io/go-ipfs/${IPFS_VERSION}/go-ipfs_${IPFS_VERSION}_linux-amd64.tar.gz
-ENV IPFS_PATH /var/local/go-ipfs/data
+ENV IPFS_PATH /var/local/go-ipfs
 
 WORKDIR /var/local
 
@@ -21,6 +21,6 @@ RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list &&
 	rm go-ipfs/* && \
     rm -rf /var/lib/apt/lists/*
 
-COPY ipfs-swarm-key-gen go-ipfs/ipfs-swarm-key-gen
+COPY ipfs-swarm-key-gen ${IPFS_PATH}/ipfs-swarm-key-gen
 
 EXPOSE 5001 8080
